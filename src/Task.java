@@ -31,18 +31,62 @@ public class Task {
         this.id=id++;
     }
 
+    public Task() {
+
+    }
+
+    public void setTitleTask(String titleTask) {
+        this.titleTask = titleTask;
+    }
+
+    public void setDescriptionTask(String descriptionTask) {
+        this.descriptionTask = descriptionTask;
+    }
+
+    public void setTypeTask(TypeTask typeTask) {
+        this.typeTask = typeTask;
+    }
+
+    public void setRepeatability(Repeatability repeatability) {
+        this.repeatability = repeatability;
+    }
+
+    public String getTitleTask() {
+        return titleTask;
+    }
+
+    public String getDescriptionTask() {
+        return descriptionTask;
+    }
+
+    public TypeTask getTypeTask(TypeTask working) {
+        return typeTask;
+    }
+
+    public Repeatability getRepeatability() {
+        return repeatability;
+    }
+
+    public LocalDate getDataTaskNow() {
+        return dataTaskNow;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        return "Task{" +
-                "titleTask='" + titleTask + '\'' +
-                ", descriptionTask='" + descriptionTask + '\'' +
-                ", typeTask=" + typeTask +
-                ", dataTaskNow=" + dataTaskNow +
-                ", yearTaskNow=" + yearTaskNow +
-                ", monthTaskNow=" + monthTaskNow +
-                ", dayTaskNow=" + dayTaskNow +
-                ", timeTask=" + timeTask +
-                ", id=" + id +
+        return "Задача{" +
+                "название='" + titleTask + '\'' +
+                ", описание='" + descriptionTask + '\'' +
+                ", тип задачи=" + typeTask +
+                ", дата задачи=" + dataTaskNow +
+                ", год задачи=" + yearTaskNow +
+                ", месяц задачи=" + monthTaskNow +
+                ", день задачи=" + dayTaskNow +
+                ", время задачи=" + timeTask +
+                ", id задачи=" + id +
                 '}';
     }
 }

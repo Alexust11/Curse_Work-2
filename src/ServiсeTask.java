@@ -1,8 +1,10 @@
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class ServiсeTask  {
+
     private Task task;
     private HashMap <Integer, Task> taskList=new HashMap<>();
 
@@ -39,12 +41,21 @@ public class ServiсeTask  {
 
     }
     private  void inputTask(Scanner scanner) {
+        Task task=new Task();
         System.out.print("Введите название задачи: ");
         String taskName = scanner.next();
         System.out.print("Введите описание задачи: ");
         String descriptionTask=scanner.next();
+              System.out.print("Введите тип  задачи 1-личная, 2-рабочая: ");
+        String typeTask=scanner.next();
+        if (typeTask.equals("1")) {
+            task.setTitleTask(String.valueOf(TypeTask.PERSONAL));
+        } else {
+            task.setTitleTask(String.valueOf(TypeTask.WORKING));
+        }
 
-
+        task.setTitleTask(taskName);
+        System.out.println(task);
     }
     private  void printMenu() {
         System.out.println(
