@@ -13,7 +13,7 @@ public class Main {
     public static Map<Integer, Task> taskList=new HashMap<>();
 
     public static void main(String[] args) {
-        Task task1 = new Task("Первая задача", "Описание первой задачи", 1,1,2022,11,2);
+        Task task1 = new Task("Первая задача", "Описание первой задачи", 1,1,2022,11,5);
 
         Task task2 = new Task("Вторая задача", "Описание второй задачи", 2, 1, 2022,11,3);
         Task task3 = new Task("Третья задача", "Описание третьей задачи", 1, 3,2022,11,4);
@@ -22,8 +22,8 @@ public class Main {
         taskList.put(task2.getID(),task2);
         taskList.put(task3.getID(),task3);
         taskList.put(task4.getID(),task4);
-        printListTaskOfData(2022,11,17);
-        printListTaskOfData(2022,11,12);
+        printListTaskOfData(2022,11,19);//проверяемая дата
+
 
 //        checkedDate = LocalDate.of(2022, 12, 15);
 
