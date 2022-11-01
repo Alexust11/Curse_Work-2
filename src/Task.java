@@ -7,8 +7,8 @@ import java.util.Random;
 public class Task {
     private String titleTask;
     private String descriptionTask;
-    private TypeTask typeTask;
-    private Repeatability repeatability;//повторяемость
+    private String typeTask;
+    private String repeatability;//повторяемость
     private LocalDate dataTaskNow; // текущая дата создания задачи
     private Integer yearTaskNow;
     private Month monthTaskNow;
@@ -16,9 +16,9 @@ public class Task {
     private Date scheduledTaskDate;//запланированная дата задачи
     private Time timeTask;
     private Random random;
-    private int id = 0;
 
-    public Task(String titleTask, String descriptionTask, TypeTask typeTask,Repeatability repeatability) {
+
+    public Task(String titleTask, String descriptionTask, String typeTask,String repeatability) {
         this.titleTask = titleTask;
         this.descriptionTask = descriptionTask;
         this.typeTask = typeTask;
@@ -28,11 +28,13 @@ public class Task {
         this.dayTaskNow=LocalDate.now().getDayOfMonth();
         this.repeatability=repeatability;
 
-        this.id=id++;
+
     }
 
-    public Task() {
+    public Task() {  }
 
+    public void setDataTaskNow(LocalDate dataTaskNow) {
+        this.dataTaskNow = dataTaskNow;
     }
 
     public void setTitleTask(String titleTask) {
@@ -43,11 +45,11 @@ public class Task {
         this.descriptionTask = descriptionTask;
     }
 
-    public void setTypeTask(TypeTask typeTask) {
+    public void setTypeTask(String typeTask) {
         this.typeTask = typeTask;
     }
 
-    public void setRepeatability(Repeatability repeatability) {
+    public void setRepeatability(String repeatability) {
         this.repeatability = repeatability;
     }
 
@@ -59,11 +61,11 @@ public class Task {
         return descriptionTask;
     }
 
-    public TypeTask getTypeTask(TypeTask working) {
+    public String getTypeTask() {
         return typeTask;
     }
 
-    public Repeatability getRepeatability() {
+    public String getRepeatability() {
         return repeatability;
     }
 
@@ -71,9 +73,6 @@ public class Task {
         return dataTaskNow;
     }
 
-    public int getId() {
-        return id;
-    }
 
     @Override
     public String toString() {
@@ -82,11 +81,7 @@ public class Task {
                 ", описание='" + descriptionTask + '\'' +
                 ", тип задачи=" + typeTask +
                 ", дата задачи=" + dataTaskNow +
-                ", год задачи=" + yearTaskNow +
-                ", месяц задачи=" + monthTaskNow +
-                ", день задачи=" + dayTaskNow +
-                ", время задачи=" + timeTask +
-                ", id задачи=" + id +
+                ", повторяемость" + repeatability+
                 '}';
     }
 }

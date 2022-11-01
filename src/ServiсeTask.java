@@ -1,12 +1,12 @@
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Scanner;
 
-public class ServiсeTask  {
+public class ServiсeTask implements RepeatTask {
+    private Integer count=0;
 
     private Task task;
-    private HashMap <Integer, Task> taskList=new HashMap<>();
+    private HashMap<String, Task> taskList=new HashMap<String, Task>();
 
     public void menu() {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -18,13 +18,14 @@ public class ServiсeTask  {
                     int menu = scanner.nextInt();
                     switch (menu) {
                         case 1:
+
                             inputTask(scanner);
                             break;
                         case 2:
                             // todo: обрабатываем пункт меню 2
                             break;
                         case 3:
-                            // todo: обрабатываем пункт меню 3
+                            System.out.println(taskList.toString());
                             break;
                         case 0:
                             break label;
@@ -42,6 +43,7 @@ public class ServiсeTask  {
     }
     private  void inputTask(Scanner scanner) {
         Task task=new Task();
+        count++;
         System.out.print("Введите название задачи: ");
         String taskName = scanner.next();
         System.out.print("Введите описание задачи: ");
@@ -49,12 +51,25 @@ public class ServiсeTask  {
               System.out.print("Введите тип  задачи 1-личная, 2-рабочая: ");
         String typeTask=scanner.next();
         if (typeTask.equals("1")) {
-            task.setTitleTask(String.valueOf(TypeTask.PERSONAL));
+            task.setTypeTask("личная");
         } else {
-            task.setTitleTask(String.valueOf(TypeTask.WORKING));
+            task.setTypeTask("рабочая");
         }
+        System.out.println("Введите периодичность задачи:1- однократная,2- ежедневная,3-еженедельная,4-ежемесячная,5- ежегодная");
+            String period=scanner.next();
+        if (period.equals("1")) { task.setRepeatability(period);}
+        if (period.equals("2")) { task.setRepeatability(period);}
+        if (period.equals("3")) { task.setRepeatability(period);}
+        if (period.equals("4")) { task.setRepeatability(period);}
+        if (period.equals("5")) { task.setRepeatability(period);}
 
+
+        task.setDataTaskNow(LocalDate.now());
+
+        task.setDescriptionTask(descriptionTask);
         task.setTitleTask(taskName);
+        String id="Задача"+String.valueOf(count);
+        taskList.put(id, task);
         System.out.println(task);
     }
     private  void printMenu() {
@@ -66,5 +81,10 @@ public class ServiсeTask  {
                         0. Выход
                         """
         );
+    }
+
+    @Override
+    public Integer repeatTask(Integer sign) {
+        return null;
     }
 }
