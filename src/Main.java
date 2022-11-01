@@ -16,17 +16,19 @@ public class Main {
         Task task1 = new Task("Первая задача", "Описание первой задачи", 1,1,2022,11,2);
 
         Task task2 = new Task("Вторая задача", "Описание второй задачи", 2, 1, 2022,11,3);
-        Task task3 = new Task("Третья задача", "Описание третьей задачи", 1, 1,2022,11,4);
+        Task task3 = new Task("Третья задача", "Описание третьей задачи", 1, 3,2022,11,4);
         Task task4 = new Task("Четвертая задача", "Описание четвертой задачи", 2, 1,2022,11,5);
         taskList.put(task1.getID(),task1);
         taskList.put(task2.getID(),task2);
         taskList.put(task3.getID(),task3);
         taskList.put(task4.getID(),task4);
-        printListTaskOfData(2022,11,8);
+        printListTaskOfData(2022,11,17);
+        printListTaskOfData(2022,11,12);
+
 //        checkedDate = LocalDate.of(2022, 12, 15);
 
 
-//        printTaskData(task3);
+      // printTaskData(task3);
     } // --------------end main-----------------------
 
     private static void printTaskData(Task task) {
@@ -34,7 +36,7 @@ public class Main {
         System.out.println("Задача: "+task.getName()+" будет выполнятся в следующие даты");
         LocalDate data1=task.getStartData();
         int step=task.getRepeatability();
-        while (!data1.equals(DATA_CHEK) ) {
+        while (!data1.isAfter(DATA_CHEK) ) {
             if (step == 2) {
                 data1 = data1.plusDays(1);
                 System.out.println(data1);
@@ -58,28 +60,22 @@ public class Main {
         Integer n=0;
 
         for (int i = 1; i <= taskList.size(); i++) {
-            int count=0;
-            LocalDate interimDate=taskList.get(i).getStartData();
-            LocalDate localDate2=checkedDate;
+                int count=0;
+                LocalDate interimDate=taskList.get(i).getStartData();
+                LocalDate localDate2=checkedDate;
+//            System.out.println("для задачи "+taskList.get(i).getName()+" начальная дата "+interimDate);
             if (taskList.get(i).getRepeatability() == 1) {
-                //Weekly weekly=new Weekly();
-//                n=weekly.formationDates(taskList.get(i).getStartData(),checkedDate);
-//                System.out.println(n);
-
-                while (!interimDate.isBefore(localDate2)) {
-
-                    if (interimDate.equals(localDate2)) {
-                        n=count++;
-                        System.out.println("!!!!!!");
-
+                while (interimDate.isBefore(checkedDate)) {
+                    interimDate = interimDate.plusWeeks(1);
+                    if (interimDate.isEqual(checkedDate)) {
+                        System.out.println(" в дату "+checkedDate+" есть задача "+taskList.get(i).getName());
                     }
-                    interimDate=interimDate.plusWeeks(1);
+//                    System.out.println("есть выполнение условия, промежуточная дата"+ interimDate+ "для задачи"+taskList.get(i).getName());
                 }
-                System.out.println(n);
 
 
-                System.out.println(taskList.get(i).getStartData()+";"+checkedDate);
             }
+
         }
 
     }
