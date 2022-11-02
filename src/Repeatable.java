@@ -1,5 +1,5 @@
 import java.time.LocalDate;
 
 public interface Repeatable {
-  Integer formationDates (LocalDate localDate1, LocalDate localDate2);
+  void formationDates (LocalDate localDate1, LocalDate localDate2, int id);
 }

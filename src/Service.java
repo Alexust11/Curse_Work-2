@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -23,6 +24,9 @@ public class Service {
                             break;
                         case 4:
                             printTaskList();
+                            break ;
+                        case 5:
+                            printTaskDataList();
                             break ;
                         case 0:
                             break label;
@@ -59,7 +63,12 @@ public class Service {
         task.setID(Main.taskList.size()+1);
         Main.taskList.put(task.getID(),task);
 
+        switch (periodTask) {
+            case 3:
+               Weekly weekly=new Weekly();
+               weekly.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHEK,task.getID());
 
+        }
 
 
 
@@ -72,6 +81,7 @@ public class Service {
                         2. Удалить задачу
                         3. Получить задачу на указанный день
                         4. Получить общий список задач
+                        5. Проверить список задач с датами (мапа с датами)
                         0. Выход
                         """
         );
@@ -87,5 +97,9 @@ public class Service {
         System.out.println("Введите ID удаляемой задачи");
         int id=scanner.nextInt();
         Main.taskList.remove(id);
+    }
+
+    public void printTaskDataList() {
+        System.out.println(Main.taskDataList);
     }
 }
