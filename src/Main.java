@@ -22,8 +22,9 @@ public class Main {
         taskList.put(task2.getID(),task2);
         taskList.put(task3.getID(),task3);
         taskList.put(task4.getID(),task4);
-        printListTaskOfData(2022,11,19);//проверяемая дата
-
+        //printListTaskOfData(2022,11,19);//проверяемая дата
+        Service service = new Service();
+        service.menu();
 
 //        checkedDate = LocalDate.of(2022, 12, 15);
 

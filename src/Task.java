@@ -19,6 +19,34 @@ public class Task {
          ID=count++;
     }
 
+    public Task() {
+
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setTypeTask(Integer typeTask) {
+        this.typeTask = typeTask;
+    }
+
+    public void setRepeatability(Integer repeatability) {
+        this.repeatability = repeatability;
+    }
+
+    public void setStartData(LocalDate startData) {
+        this.startData = startData;
+    }
+
     public String getName() {
         return name;
     }
