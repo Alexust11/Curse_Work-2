@@ -20,7 +20,7 @@ public class Service {
                             deleteTask(scanner);
                             break;
                         case 3:
-                            // todo: обрабатываем пункт меню 3
+                            printTaskToData(scanner);
                             break;
                         case 4:
                             printTaskList();
@@ -38,7 +38,28 @@ public class Service {
             }
         }
     }
-    private static void inputTask(Scanner scanner) {
+
+    private void printTaskToData(Scanner scanner) {//метод вывода задач по дате
+        System.out.println("Введите число");
+        int day = scanner.nextInt();
+        System.out.println("Введите месяц");
+        int month=scanner.nextInt();
+        System.out.println("Введите год");
+        int year=scanner.nextInt();
+        LocalDate date = LocalDate.of(year, month, day);
+        System.out.println("На дату "+date+" имеются задачи:");
+        for (int i = 1; i <=Main.taskDataList.size() ; i++) {
+
+                if (Main.taskDataList.get(i).contains(date)) {
+                    System.out.println(Main.taskList.get(i).getName());
+                }
+
+
+
+        }
+    }
+
+    private static void inputTask(Scanner scanner) {// метод ввода задачи и создания массива дат задачи
         Task task=new Task();
         System.out.print("Введите название задачи: ");
         String taskName = scanner.next();
@@ -62,15 +83,26 @@ public class Service {
         task.setStartData(yearTask,monthTask,dayTask);
         task.setID(Main.taskList.size()+1);
         Main.taskList.put(task.getID(),task);
-
-        switch (periodTask) {
-            case 3:
-               Weekly weekly=new Weekly();
-               weekly.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHEK,task.getID());
-
+        if (periodTask == 1) {
+            Onetime onetime=new Onetime();
+            onetime.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHECK,task.getID());
         }
-
-
+        if (periodTask == 2) {
+            Daily daily=new Daily();
+            daily.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHECK,task.getID());
+        }
+        if (periodTask == 3) {
+            Weekly weekly=new Weekly();
+            weekly.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHECK,task.getID());
+        }
+        if (periodTask == 4) {
+            Monthly monthly=new Monthly();
+            monthly.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHECK,task.getID());
+        }
+        if (periodTask == 5) {
+            Annual annual=new Annual();
+            annual.formationDates(LocalDate.of(yearTask,monthTask,dayTask),Main.DATA_CHECK,task.getID());
+        }
 
     }
 
@@ -86,14 +118,18 @@ public class Service {
                         """
         );
     }
-   public void printTaskList() {
+   public void printTaskList() { // метод получения общего списка задач
        for (int i = 1; i <= Main.taskList.size(); i++) {
-           System.out.println("ID задачи-"+Main.taskList.get(i).getID()+". Название задачи - "+Main.taskList.get(i).getName());
+
+           if (Main.taskList.get(i).getID()!=null) {
+               System.out.println("ID задачи-"+Main.taskList.get(i).getID()+". Название задачи - "+Main.taskList.get(i).getName());
+
+           }
        }
 
    }
 
-    public void deleteTask(Scanner scanner) {
+    public void deleteTask(Scanner scanner) {// метод удаления задач по id, требует доработки: Нужно сдвинуть объекты map, иначе пропуск id и ошибка
         System.out.println("Введите ID удаляемой задачи");
         int id=scanner.nextInt();
         Main.taskList.remove(id);
@@ -101,5 +137,5 @@ public class Service {
 
     public void printTaskDataList() {
         System.out.println(Main.taskDataList);
-    }
+    }// временный метод для вывода всех дат всех задач
 }
