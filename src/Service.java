@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -119,13 +120,16 @@ public class Service {
         );
     }
    public void printTaskList() { // метод получения общего списка задач
-       for (int i = 1; i <= Main.taskList.size(); i++) {
 
-           if (Main.taskList.get(i).getID()!=null) {
-               System.out.println("ID задачи-"+Main.taskList.get(i).getID()+". Название задачи - "+Main.taskList.get(i).getName());
-
-           }
-       }
+       Collection<Task> values = Main.taskList.values();
+       System.out.println(values);
+//       for (int i = 1; i <= Main.taskList.size(); i++) {
+//
+//           System.out.println(Main.taskList.c);
+//              // System.out.println("ID задачи-"+Main.taskList.getOrDefault(i,null).getID()+". Название задачи - "+Main.taskList.getOrDefault(i,null).getName());
+//
+//
+//       }
 
    }
 
