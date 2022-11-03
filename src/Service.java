@@ -121,7 +121,10 @@ public class Service {
    public void printTaskList() { // метод получения общего списка задач
 
        Collection<Task> values = Main.taskList.values();
-       System.out.println(values);
+       // System.out.println(values);
+       for (Task v:values ) {
+           System.out.println("<Задача> ID: "+v.getID()+" :"+v.getName()+" Дата начала:"+v.getStartData());
+       }
 //       for (int i = 1; i <= Main.taskList.size(); i++) {
 //
 //           System.out.println(Main.taskList.c);
@@ -136,6 +139,7 @@ public class Service {
         System.out.println("Введите ID удаляемой задачи");
         int id=scanner.nextInt();
         Main.taskList.remove(id);
+        Main.taskDataList.remove(id);
     }
 
     public void printTaskDataList() {
