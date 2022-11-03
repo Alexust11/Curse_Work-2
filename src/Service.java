@@ -1,10 +1,9 @@
 import java.time.LocalDate;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Service {
-    private Task task;
+   // private Task task;
     public void menu() {
         try (Scanner scanner = new Scanner(System.in)) {
             label:
@@ -69,13 +68,13 @@ public class Service {
         System.out.print("Введите тип задачи: 1-личная, 2-рабочая ");
         int typeTask=scanner.nextInt();
         System.out.print("Введите периодичность задачи: 1-- однократная, 2-ежедневная, 3- еженедельная, 4- ежемесячная, 5- ежегодная. ");
-        Integer periodTask=scanner.nextInt();
+        int periodTask=scanner.nextInt();
         System.out.println("Введите день начала задачи");
-        Integer dayTask=scanner.nextInt();
+        int dayTask=scanner.nextInt();
         System.out.println("Введите месяц начала задачи");
-        Integer monthTask=scanner.nextInt();
+        int monthTask=scanner.nextInt();
         System.out.println("Введите год начала задачи");
-        Integer yearTask=scanner.nextInt();
+        int yearTask=scanner.nextInt();
 
         task.setName(taskName);
         task.setDescription(description);
