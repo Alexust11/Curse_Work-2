@@ -46,7 +46,10 @@ public class Main {
                             serviceTask.printTaskNew(taskList);
                             break;
                         case 5:
-                            formDataTask(scanner);
+                            System.out.println(" Введите id задачи");
+                            Integer id=scanner.nextInt();
+                            ServiceTask serviceTask1=new ServiceTask();
+                            serviceTask1.printOneTaskData(taskList, id);
                             break;
                         case 0:
                             break label;
@@ -66,7 +69,7 @@ public class Main {
                         2. Удалить задачу
                         3. Получить задачу на указанный день
                         4. Получить общий список задач
-                        5. Получить даты задачи
+                        5. Получить даты 1 задачи по id
                         0. Выход
                         """
         );
@@ -115,24 +118,5 @@ public class Main {
 
     }
 
-    private static void formDataTask(Scanner scanner) {
-        System.out.println("Введите id задачи");
-        int id = scanner.nextInt();
-        int period = taskList.get(id).getRepeatability();
-        LocalDate interimDateEnd1 = LocalDate.of(2023, 12, 31);
-        LocalDate interimDateEnd2 = taskList.get(id).getStartData();
-        System.out.println(interimDateEnd2);
-        while (!interimDateEnd2.isAfter(interimDateEnd1)) {
-            if (period == 2) {
-                interimDateEnd2 = interimDateEnd2.plusDays(1);
-            }
-            if (period == 3) {
-                interimDateEnd2 = interimDateEnd2.plusWeeks(1);
-            }
-            if (period == 4) {
-                interimDateEnd2 = interimDateEnd2.plusMonths(1);
-            }
-            System.out.println(interimDateEnd2);
-        }
-    }
+
 } // -------------- end class main--------------------
