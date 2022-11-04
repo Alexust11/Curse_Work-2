@@ -8,19 +8,14 @@ public class Task {
     private Integer repeatability; // повторяемость 1- однократная, 2-ежедневная, 3-еженедельная, 4- ежемесячная, 5- ежегодная.
     private LocalDate startData;
 
-    private  int ID;
+    private  Integer ID;
     private static int count=1;
-//    public Task(String name, String description, Integer typeTask, Integer repeatability, int yaer, int month, int day) {
-//        this.name = name;
-//        this.description = description;
-//        this.typeTask = typeTask;
-//        this.repeatability = repeatability;
-//        this.startData=LocalDate.of(yaer,month,day);
-//
-//    }
+
 
     public Task() {
-        ID=count++;
+
+        ID=count;
+        count++;
     }
 
     public void setName(String name) {
@@ -31,9 +26,9 @@ public class Task {
         this.description = description;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+//    public void setID(int ID) {
+//        this.ID = ID;
+//    }
 
     public void setTypeTask(Integer typeTask) {
         this.typeTask = typeTask;
@@ -69,12 +64,12 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Задача{" +
+        return
                 "Название='" + name + '\'' +
                 ", описание='" + description + '\'' +
-                ", тип задачи=" + typeTask +
-                ", повторяемость=" + repeatability +
-                ", время начала" + startData +
+//                ", тип задачи=" + typeTask +
+                  ", повторяемость=" + repeatability +
+//                ", время начала" + startData +
                 '}';
     }
 

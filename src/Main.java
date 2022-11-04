@@ -4,15 +4,14 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-
 public class Main {
 
 
-    public static   Map<Integer, Task> taskList = new HashMap<>();
+    public static Map<Integer, Task> taskList = new HashMap<>();
     public static LocalDate dataSearch;
 
 
-     public static void main(String[] args) {
+    public static void main(String[] args) {
 
         menu();
 
@@ -35,18 +34,20 @@ public class Main {
                             ;
                             break;
                         case 2:
-                           deleteTask(scanner);
+                            deleteTask(scanner);
                             break;
                         case 3:
 //                            service.printTaskToData(scanner);
                             break;
                         case 4:
+                            // System.out.println(taskList);
+                            ServiceTask serviceTask = new ServiceTask();
                             System.out.println(taskList);
-//                            service.printTaskList();
-                            break ;
+                            serviceTask.printTaskNew(taskList);
+                            break;
                         case 5:
                             formDataTask(scanner);
-                            break ;
+                            break;
                         case 0:
                             break label;
                     }
@@ -57,6 +58,7 @@ public class Main {
             }
         }
     }
+
     private static void printMenu() {
         System.out.println(
                 """
@@ -69,30 +71,31 @@ public class Main {
                         """
         );
     }
+
     private static void inputTask(Scanner scanner) {// метод ввода задачи и создания массива дат задачи
-        Task task=new Task();
+        Task task = new Task();
         System.out.print("Введите название задачи: ");
         String taskName = scanner.next();
         System.out.print("Введите описание задачи: ");
         String description = scanner.next();
         System.out.print("Введите тип задачи: 1-личная, 2-рабочая ");
-        int typeTask=scanner.nextInt();
+        int typeTask = scanner.nextInt();
         System.out.println("Введите периодичность задачи: 1-- однократная, 2-ежедневная, 3- еженедельная, 4- ежемесячная, 5- ежегодная. ");
-        int periodTask=scanner.nextInt();
+        int periodTask = scanner.nextInt();
         System.out.println("Введите день начала задачи");
-        int dayTask=scanner.nextInt();
+        int dayTask = scanner.nextInt();
         System.out.println("Введите месяц начала задачи");
-        int monthTask=scanner.nextInt();
+        int monthTask = scanner.nextInt();
         System.out.println("Введите год начала задачи");
-        int yearTask=scanner.nextInt();
+        int yearTask = scanner.nextInt();
         //--------------------------------------------------
         task.setName(taskName);
         task.setDescription(description);
         task.setTypeTask(typeTask);
         task.setRepeatability(periodTask);
-        task.setStartData(yearTask,monthTask,dayTask);
+        task.setStartData(yearTask, monthTask, dayTask);
         //--------------------------------------------------
-        taskList.put(task.getID(),task );
+        taskList.put(task.getID(), task);
 
     }
 
@@ -103,7 +106,7 @@ public class Main {
 
     private static void inputDataTask(Scanner scanner) {
         System.out.println("Введите число");
-        int day=scanner.nextInt();
+        int day = scanner.nextInt();
         System.out.println("Введите месяц");
         int month = scanner.nextInt();
         System.out.println("Введите год");
@@ -114,21 +117,22 @@ public class Main {
 
     private static void formDataTask(Scanner scanner) {
         System.out.println("Введите id задачи");
-         int id=scanner.nextInt();
-         int period=taskList.get(id).getRepeatability();
-         LocalDate interimDateEnd1=LocalDate.of(2023,12,31);
-         LocalDate interimDateEnd2=taskList.get(id).getStartData();
-            System.out.println(interimDateEnd2);
+        int id = scanner.nextInt();
+        int period = taskList.get(id).getRepeatability();
+        LocalDate interimDateEnd1 = LocalDate.of(2023, 12, 31);
+        LocalDate interimDateEnd2 = taskList.get(id).getStartData();
+        System.out.println(interimDateEnd2);
         while (!interimDateEnd2.isAfter(interimDateEnd1)) {
             if (period == 2) {
-                interimDateEnd1.plusDays(1);
-            }if (period == 3) {
-                interimDateEnd1.plusWeeks(1);
+                interimDateEnd2 = interimDateEnd2.plusDays(1);
+            }
+            if (period == 3) {
+                interimDateEnd2 = interimDateEnd2.plusWeeks(1);
             }
             if (period == 4) {
-                interimDateEnd1.plusMonths(1);
+                interimDateEnd2 = interimDateEnd2.plusMonths(1);
             }
-            System.out.println(interimDateEnd1);
+            System.out.println(interimDateEnd2);
         }
     }
 } // -------------- end class main--------------------
