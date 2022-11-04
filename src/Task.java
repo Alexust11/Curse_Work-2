@@ -10,17 +10,17 @@ public class Task {
 
     private  int ID;
     private static int count=1;
-    public Task(String name, String description, Integer typeTask, Integer repeatability, int yaer, int month, int day) {
-        this.name = name;
-        this.description = description;
-        this.typeTask = typeTask;
-        this.repeatability = repeatability;
-        this.startData=LocalDate.of(yaer,month,day);
-         ID=count++;
-    }
+//    public Task(String name, String description, Integer typeTask, Integer repeatability, int yaer, int month, int day) {
+//        this.name = name;
+//        this.description = description;
+//        this.typeTask = typeTask;
+//        this.repeatability = repeatability;
+//        this.startData=LocalDate.of(yaer,month,day);
+//
+//    }
 
     public Task() {
-
+        ID=count++;
     }
 
     public void setName(String name) {
