@@ -31,4 +31,31 @@ public class ServiceTask  {
             System.out.println(localDateHome);
         }
     }
+    public void printTasksToData(Map<Integer, Task> map, LocalDate localDateEnd) {
+        for (Integer n: map.keySet() ) {
+            Integer number=map.get(n).getRepeatability(); // получаю значение повторяемости
+            if (number == 1) {
+                Onetime onetime=new Onetime();
+                onetime.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+            }
+            if (number == 2) {
+                Daily daily=new Daily();
+                daily.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+            }
+            if (number == 3) {
+                Weekly weekly=new Weekly();
+                weekly.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+            }
+            if (number == 4) {
+                Monthly monthly=new Monthly();
+                monthly.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+            }
+            if (number == 5) {
+                Annual annual=new Annual();
+                annual.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+            }
+        }
+    }
+
+
 }

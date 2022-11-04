@@ -69,7 +69,7 @@ public class Task {
                 ", описание='" + description + '\'' +
 //                ", тип задачи=" + typeTask +
                   ", повторяемость=" + repeatability +
-//                ", время начала" + startData +
+                   ", время начала" + startData +
                 '}';
     }
 

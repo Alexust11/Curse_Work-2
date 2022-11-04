@@ -37,7 +37,15 @@ public class Main {
                             deleteTask(scanner);
                             break;
                         case 3:
-//                            service.printTaskToData(scanner);
+                            ServiceTask serviceTask2=new ServiceTask();
+                            System.out.println("Введите число");
+                            int day = scanner.nextInt();
+                            System.out.println("Введите месяц");
+                            int month = scanner.nextInt();
+                            System.out.println("Введите год");
+                            int year = scanner.nextInt();
+                            LocalDate localDateEnd=LocalDate.of(year,month,day);
+                            serviceTask2.printTasksToData(taskList,localDateEnd);
                             break;
                         case 4:
                             // System.out.println(taskList);
@@ -67,9 +75,9 @@ public class Main {
                 """
                         1. Добавить задачу
                         2. Удалить задачу
-                        3. Получить задачу на указанный день
+                        3. Получить задачи на указанный день
                         4. Получить общий список задач
-                        5. Получить даты 1 задачи по id
+                        5. Получить даты одной задачи по id
                         0. Выход
                         """
         );
@@ -107,16 +115,7 @@ public class Main {
         taskList.remove(scanner.nextInt());
     }
 
-    private static void inputDataTask(Scanner scanner) {
-        System.out.println("Введите число");
-        int day = scanner.nextInt();
-        System.out.println("Введите месяц");
-        int month = scanner.nextInt();
-        System.out.println("Введите год");
-        int year = scanner.nextInt();
-        dataSearch = LocalDate.of(year, month, day);
 
-    }
 
 
 } // -------------- end class main--------------------
