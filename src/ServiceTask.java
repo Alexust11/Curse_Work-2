@@ -44,13 +44,13 @@ public class ServiceTask  {
 
        for (Map.Entry<Integer, Task> n: taskList.entrySet() ) {
            var task=n.getValue();
-           if (task.getStartData().equals(localDateEnd)) {
+           if (task.formationDates(localDateEnd)) {
                System.out.println(" на дату "+localDateEnd+ " етсь задача "+ task.getName());
            }
         }
   }
     public  void inputTask(Scanner scanner) {// метод ввода задачи и создания массива дат задачи
-        Task task = new Task();
+
         System.out.print("Введите название задачи: ");
         String taskName = scanner.next();
         System.out.print("Введите описание задачи: ");
@@ -65,14 +65,38 @@ public class ServiceTask  {
         int monthTask = scanner.nextInt();
         System.out.println("Введите год начала задачи");
         int yearTask = scanner.nextInt();
+        LocalDate startTask = LocalDate.of(yearTask, monthTask, dayTask);
         //--------------------------------------------------
-        task.setName(taskName);
-        task.setDescription(description);
-        task.setTypeTask(typeTask);
-        task.setRepeatability(periodTask);
-        task.setStartData(yearTask, monthTask, dayTask);
+        switch (periodTask) {
+            case 1:
+                var task= new Task(taskName, description, typeTask, periodTask, startTask);
+                taskList.put(task.getID(), task);
+                break;
+            case 2:
+                var task1=new Daily(taskName, description, typeTask, periodTask, startTask);
+                taskList.put(task1.getID(), task1);
+                break;
+            case 3:
+                var task2=new Weekly(taskName, description, typeTask, periodTask, startTask);
+                taskList.put(task2.getID(), task2);
+                break;
+            case 4:
+                var task3=new Monthly(taskName, description, typeTask, periodTask, startTask);
+                taskList.put(task3.getID(), task3);
+                break;
+            case 5:
+                var task4=new Annual(taskName, description, typeTask, periodTask, startTask);
+                taskList.put(task4.getID(), task4);
+                break;
+        }
+
+
+
+
+
+
         //--------------------------------------------------
-        taskList.put(task.getID(), task);
+
 
     }
     public void deleteTask(Scanner scanner) {

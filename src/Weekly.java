@@ -2,13 +2,14 @@ import java.time.LocalDate;
 
 
 public class Weekly extends Task {
-    public Weekly() {
+    public Weekly(String name, String description, Integer typeTask, Integer repeatability, LocalDate startData) {
+        super(name, description, typeTask, repeatability, startData);
     }
 
     @Override
     public boolean formationDates(LocalDate localDateEnd) {
         LocalDate date=getStartData();
-        while (date.isBefore(localDateEnd)) {
+        while (!date.isAfter(localDateEnd)) {
             if (date.equals(localDateEnd)) {
                 return true;
             }
