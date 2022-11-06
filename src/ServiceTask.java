@@ -36,23 +36,23 @@ public class ServiceTask  {
             Integer number=map.get(n).getRepeatability(); // получаю значение повторяемости
             if (number == 1) {
                 Onetime onetime=new Onetime();
-                onetime.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+                onetime.formationDates(localDateEnd);
             }
             if (number == 2) {
                 Daily daily=new Daily();
-                daily.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+                daily.formationDates(localDateEnd);
             }
             if (number == 3) {
                 Weekly weekly=new Weekly();
-                weekly.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+                weekly.formationDates(localDateEnd);
             }
             if (number == 4) {
                 Monthly monthly=new Monthly();
-                monthly.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+                monthly.formationDates(localDateEnd);
             }
             if (number == 5) {
                 Annual annual=new Annual();
-                annual.formationDates(map.get(n).getStartData(), localDateEnd, n, map);
+                annual.formationDates(localDateEnd);
             }
         }
     }

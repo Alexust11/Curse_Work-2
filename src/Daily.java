@@ -3,17 +3,23 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Daily implements Repeatable{
-
+  private Task task;
     @Override
-    public void formationDates(LocalDate localDateHome, LocalDate localDateEnd, Integer id, Map<Integer, Task> map) {
-        while (!localDateHome.isAfter(localDateEnd)) {
-            if (localDateHome.equals(localDateEnd)) {
-                System.out.println(" На дату: "+localDateEnd+" имеется задача -"+map.get(id).getName());
+    public void formationDates(LocalDate localDateEnd) {
+       LocalDate taskDate = task.getStartData();
+
+        while (!taskDate.isAfter(localDateEnd)) {
+
+            if (taskDate.equals(localDateEnd)) {
+
+                System.out.println(" На дату: "+localDateEnd+" имеется задача -"+task.getName());
 
             }
-            localDateHome=localDateHome.plusDays(1);
+
+            taskDate=taskDate.plusDays(1);
 
         }
+
 
     }
 }

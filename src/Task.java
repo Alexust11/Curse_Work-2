@@ -38,9 +38,6 @@ public class Task {
         this.repeatability = repeatability;
     }
 
-    public void setStartData(LocalDate startData) {
-        this.startData = startData;
-    }
 
     public String getName() {
         return name;
