@@ -41,30 +41,14 @@ public class ServiceTask  {
         int year = scanner.nextInt();
         LocalDate localDateEnd=LocalDate.of(year,month,day);
 
-        for (Integer n: taskList.keySet() ) {
-            Integer number=taskList.get(n).getRepeatability(); // получаю значение повторяемости
-            if (number == 1) {
-                Onetime onetime=new Onetime();
-                onetime.formationDates(localDateEnd,taskList.get(n));
-            }
-            if (number == 2) {
-                Daily daily=new Daily();
-                daily.formationDates(localDateEnd,taskList.get(n));
-            }
-            if (number == 3) {
-                Weekly weekly=new Weekly();
-                weekly.formationDates(localDateEnd,taskList.get(n));
-            }
-            if (number == 4) {
-                Monthly monthly=new Monthly();
-                monthly.formationDates(localDateEnd,taskList.get(n));
-            }
-            if (number == 5) {
-                Annual annual=new Annual();
-                annual.formationDates(localDateEnd,taskList.get(n));
-            }
+
+       for (Map.Entry<Integer, Task> n: taskList.entrySet() ) {
+           var task=n.getValue();
+           if (task.getStartData().equals(localDateEnd)) {
+               System.out.println(" на дату "+localDateEnd+ " етсь задача "+ task.getName());
+           }
         }
-    }
+  }
     public  void inputTask(Scanner scanner) {// метод ввода задачи и создания массива дат задачи
         Task task = new Task();
         System.out.print("Введите название задачи: ");

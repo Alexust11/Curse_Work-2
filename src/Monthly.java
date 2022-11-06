@@ -2,23 +2,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Monthly implements Repeatable{
+public class Monthly extends Task{
+    public Monthly() {
+    }
 
     @Override
-    public void formationDates(LocalDate localDateEnd, Task task) {
-        LocalDate taskDate = task.getStartData();
-
-        while (!taskDate.isAfter(localDateEnd)) {
-
-            if (taskDate.equals(localDateEnd)) {
-
-                System.out.println(" На дату: "+localDateEnd+" имеется задача -"+task.getName());
-
+    public boolean formationDates(LocalDate localDateEnd) {
+       LocalDate date=getStartData();
+        while (date.isBefore(localDateEnd)) {
+            if (date.equals(localDateEnd)) {
+                return true;
             }
-
-            taskDate=taskDate.plusMonths(1);
-
+            date=date.plusMonths(1);
         }
-
+        return false;
     }
+
 }
+

@@ -1,24 +1,21 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Map;
+;
 
-public class Annual implements Repeatable{
+public class Annual extends Task{
+    public Annual() {
+    }
 
     @Override
-    public void formationDates(LocalDate localDateEnd, Task task) {
-        LocalDate taskDate = task.getStartData();
-
-        while (!taskDate.isAfter(localDateEnd)) {
-
-            if (taskDate.equals(localDateEnd)) {
-
-                System.out.println(" На дату: "+localDateEnd+" имеется задача -"+task.getName());
-
+    public boolean formationDates(LocalDate localDateEnd) {
+        LocalDate date=getStartData();
+        while (date.isBefore(localDateEnd)) {
+            if (date.equals(localDateEnd)) {
+                return true;
             }
-
-            taskDate=taskDate.plusYears(1);
-
+            date=date.plusYears(1);
         }
+        return false;
+    }
 
     }
-}
+

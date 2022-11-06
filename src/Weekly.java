@@ -1,21 +1,22 @@
 import java.time.LocalDate;
 
 
-public class Weekly implements Repeatable {
-
+public class Weekly extends Task {
+    public Weekly() {
+    }
 
     @Override
-    public void formationDates(LocalDate localDateEnd, Task task) {
-
-        LocalDate taskDate = task.getStartData();
-        while (!taskDate.isAfter(localDateEnd)) {
-            if (taskDate.equals(localDateEnd)) {
-                System.out.println(" На дату: " + localDateEnd + " имеется задача -" + task.getName());
+    public boolean formationDates(LocalDate localDateEnd) {
+        LocalDate date=getStartData();
+        while (date.isBefore(localDateEnd)) {
+            if (date.equals(localDateEnd)) {
+                return true;
             }
-            taskDate = taskDate.plusWeeks(1);
-
+            date=date.plusWeeks(1);
         }
+        return false;
+    }
 
 
     }
-}
+

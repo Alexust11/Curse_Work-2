@@ -3,6 +3,6 @@ import java.util.Map;
 
 public interface Repeatable{
 
- void formationDates (LocalDate localDateEnd, Task task);
+ boolean formationDates (LocalDate localDateEnd);
 
 }

@@ -2,24 +2,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class Daily implements Repeatable{
+public class Daily extends Task{
+    public Daily() {
+    }
 
     @Override
-    public void formationDates(LocalDate localDateEnd, Task task) {
-       LocalDate taskDate = task.getStartData();
-
-        while (!taskDate.isAfter(localDateEnd)) {
-
-            if (taskDate.equals(localDateEnd)) {
-
-                System.out.println(" На дату: "+localDateEnd+" имеется задача -"+task.getName());
-
+    public boolean formationDates(LocalDate localDateEnd) {
+        LocalDate date=getStartData();
+        while (date.isBefore(localDateEnd)) {
+            if (date.equals(localDateEnd)) {
+                return true;
             }
-
-            taskDate=taskDate.plusDays(1);
-
+            date=date.plusDays(1);
         }
-
-
+        return false;
     }
+
+
 }
