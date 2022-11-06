@@ -7,7 +7,7 @@ import java.util.*;
 public class Main {
 
 
-    public static Map<Integer, Task> taskList = new HashMap<>();
+
     public static LocalDate dataSearch;
 
 
@@ -20,6 +20,7 @@ public class Main {
     } // --------------end main-----------------------
 
     public static void menu() {
+        ServiceTask serviceTask=new ServiceTask();
         try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
@@ -29,35 +30,20 @@ public class Main {
                     int menu = scanner.nextInt();
                     switch (menu) {
                         case 1:
-
-                            inputTask(scanner);
-                            ;
+                            serviceTask.inputTask(scanner);
                             break;
                         case 2:
-                            deleteTask(scanner);
+                            serviceTask.deleteTask(scanner);
                             break;
                         case 3:
-                            ServiceTask serviceTask2=new ServiceTask();
-                            System.out.println("Введите число");
-                            int day = scanner.nextInt();
-                            System.out.println("Введите месяц");
-                            int month = scanner.nextInt();
-                            System.out.println("Введите год");
-                            int year = scanner.nextInt();
-                            LocalDate localDateEnd=LocalDate.of(year,month,day);
-                            serviceTask2.printTasksToData(taskList,localDateEnd);
+                            serviceTask.printTasksToData(scanner);
                             break;
                         case 4:
-                            // System.out.println(taskList);
-                            ServiceTask serviceTask = new ServiceTask();
-                            System.out.println(taskList);
-                            serviceTask.printTaskNew(taskList);
+
+                            serviceTask.printAllTask();
                             break;
                         case 5:
-                            System.out.println(" Введите id задачи");
-                            Integer id=scanner.nextInt();
-                            ServiceTask serviceTask1=new ServiceTask();
-                            serviceTask1.printOneTaskData(taskList, id);
+                            serviceTask.printOneTaskData(scanner);
                             break;
                         case 0:
                             break label;
@@ -83,37 +69,9 @@ public class Main {
         );
     }
 
-    private static void inputTask(Scanner scanner) {// метод ввода задачи и создания массива дат задачи
-        Task task = new Task();
-        System.out.print("Введите название задачи: ");
-        String taskName = scanner.next();
-        System.out.print("Введите описание задачи: ");
-        String description = scanner.next();
-        System.out.print("Введите тип задачи: 1-личная, 2-рабочая ");
-        int typeTask = scanner.nextInt();
-        System.out.println("Введите периодичность задачи: 1-- однократная, 2-ежедневная, 3- еженедельная, 4- ежемесячная, 5- ежегодная. ");
-        int periodTask = scanner.nextInt();
-        System.out.println("Введите день начала задачи");
-        int dayTask = scanner.nextInt();
-        System.out.println("Введите месяц начала задачи");
-        int monthTask = scanner.nextInt();
-        System.out.println("Введите год начала задачи");
-        int yearTask = scanner.nextInt();
-        //--------------------------------------------------
-        task.setName(taskName);
-        task.setDescription(description);
-        task.setTypeTask(typeTask);
-        task.setRepeatability(periodTask);
-        task.setStartData(yearTask, monthTask, dayTask);
-        //--------------------------------------------------
-        taskList.put(task.getID(), task);
 
-    }
 
-    private static void deleteTask(Scanner scanner) {
-        System.out.print("Введите id удаляемой задачи: ");
-        taskList.remove(scanner.nextInt());
-    }
+
 
 
 

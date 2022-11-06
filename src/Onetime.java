@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Onetime implements Repeatable{
-    private Task task;
+
     @Override
-    public void formationDates(LocalDate localDateEnd) {
+    public void formationDates(LocalDate localDateEnd, Task task) {
         LocalDate taskDate = task.getStartData();
 
         if (taskDate.equals(localDateEnd)) {

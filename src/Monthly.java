@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Monthly implements Repeatable{
-    private Task task;
+
     @Override
-    public void formationDates(LocalDate localDateEnd) {
+    public void formationDates(LocalDate localDateEnd, Task task) {
         LocalDate taskDate = task.getStartData();
 
         while (!taskDate.isAfter(localDateEnd)) {

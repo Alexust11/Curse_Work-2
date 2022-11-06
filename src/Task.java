@@ -1,7 +1,6 @@
 import java.time.LocalDate;
-import java.util.Date;
 
-public class Task {
+public class Task{
     private String name;// имя задачи
     private String description;// описание задачи
     private Integer typeTask; // тип задачи 1-личная, 2-рабочая
@@ -69,6 +68,7 @@ public class Task {
                    ", время начала" + startData +
                 '}';
     }
+
 
 
 }
