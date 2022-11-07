@@ -8,16 +8,16 @@ public class Weekly extends Task {
 
     @Override
     public boolean formationDates(LocalDate localDateEnd) {
-        LocalDate date=getStartData();
+        LocalDate date = getStartData();
         while (!date.isAfter(localDateEnd)) {
             if (date.equals(localDateEnd)) {
                 return true;
             }
-            date=date.plusWeeks(1);
+            date = date.plusWeeks(1);
         }
         return false;
     }
 
 
-    }
+}
 

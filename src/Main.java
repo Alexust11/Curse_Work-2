@@ -7,7 +7,6 @@ import java.util.*;
 public class Main {
 
 
-
     public static LocalDate dataSearch;
 
 
@@ -20,7 +19,7 @@ public class Main {
     } // --------------end main-----------------------
 
     public static void menu() {
-        ServiceTask serviceTask=new ServiceTask();
+        ServiceTask serviceTask = new ServiceTask();
         try (Scanner scanner = new Scanner(System.in)) {
             label:
             while (true) {
@@ -68,12 +67,6 @@ public class Main {
                         """
         );
     }
-
-
-
-
-
-
 
 
 } // -------------- end class main--------------------

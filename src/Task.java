@@ -1,14 +1,14 @@
 import java.time.LocalDate;
 
-public class Task implements Repeatable{
+public class Task implements Repeatable {
     private String name;// имя задачи
     private String description;// описание задачи
     private Integer typeTask; // тип задачи 1-личная, 2-рабочая
     private Integer repeatability; // повторяемость 1- однократная, 2-ежедневная, 3-еженедельная, 4- ежемесячная, 5- ежегодная.
     private LocalDate startData;
 
-    private  Integer ID;
-    private static int count=1;
+    private Integer id;
+    private static int count = 1;
 
     public Task(String name, String description, Integer typeTask, Integer repeatability, LocalDate startData) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Task implements Repeatable{
         this.typeTask = typeTask;
         this.repeatability = repeatability;
         this.startData = startData;
-        ID=count;
+        id = count;
         count++;
     }
 
@@ -34,9 +34,6 @@ public class Task implements Repeatable{
         this.description = description;
     }
 
-//    public void setID(int ID) {
-//        this.ID = ID;
-//    }
 
     public void setTypeTask(Integer typeTask) {
         this.typeTask = typeTask;
@@ -52,7 +49,7 @@ public class Task implements Repeatable{
     }
 
     public void setStartData(int yaer, int month, int day) {
-        this.startData = LocalDate.of(yaer,month,day);
+        this.startData = LocalDate.of(yaer, month, day);
     }
 
     public Integer getRepeatability() {
@@ -63,20 +60,19 @@ public class Task implements Repeatable{
         return startData;
     }
 
-    public Integer getID() {
-        return ID;
+    public Integer getId() {
+        return id;
     }
 
     @Override
     public String toString() {
         return
                 "Название='" + name + '\'' +
-                ", описание='" + description + '\'' +
+                        ", описание='" + description + '\'' +
 //                ", тип задачи=" + typeTask +
-                  ", повторяемость=" + repeatability +
-                   ", время начала" + startData;
+                        ", повторяемость=" + repeatability +
+                        ", время начала" + startData;
     }
-
 
 
     @Override
